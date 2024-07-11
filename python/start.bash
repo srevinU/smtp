@@ -1,0 +1,1 @@
+docker-compose -p "smtp-python" up --build -d

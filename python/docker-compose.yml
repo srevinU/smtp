@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  server:
+    container_name: "smtp_server"
+    image: "smtp_server"
+    restart: "unless-stopped"
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    command: "python3 -m uvicorn main:app --reload --host 0.0.0.0"
+    volumes:
+      - ".:/app/.:rw"
+    env_file:
+      - ".env"
+    ports:
+      - 127.0.0.1:5430:8000
+    networks:
+      - "smtp_net"
+
+networks:
+  smtp_net:
