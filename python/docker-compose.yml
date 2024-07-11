@@ -20,3 +20,5 @@ services:
 
 networks:
   smtp_net:
+    name: "smtp_net"
+    driver: "bridge"
