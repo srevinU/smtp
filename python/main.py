@@ -6,12 +6,14 @@ import os
 from dotenv import load_dotenv
 
 app = FastAPI()
-origins = os.environ['ORIGINS'].split(',')
+load_dotenv()
+
+origins = os.environ['ORIGINS'].split(' ')
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
