@@ -37,4 +37,4 @@ async def send_email(message: Message):
     return EmailResponse(status=result['status'], message=result['message'])
 
 if __name__ == '__main__':
-    uvicorn.run(f"{Path(__file__).stem}:app", host="smtp_server", port=8000, reload=True)
+    uvicorn.run(f"{Path(__file__).stem}:app", host="smtp_server", port=5430, reload=True)
