@@ -25,11 +25,16 @@ class Message(BaseModel):
     from_: str
     message: str
 
+class EmailResponse(BaseModel):
+    status: int
+    message: str
+
 @app.post("/smtp/email/")
 async def send_email(message: Message):
     print(message)
     myserver = Smtp()
-    return myserver.send_email(from_=message.from_ ,message=message.message)
+    result = myserver.send_email(from_=message.from_ ,message=message.message)
+    return EmailResponse(status=result['status'], message=result['message'])
 
 if __name__ == '__main__':
     uvicorn.run(f"{Path(__file__).stem}:app", host="0.0.0.0", port=8000, reload=True)

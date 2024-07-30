@@ -25,10 +25,10 @@ class Smtp:
             self.server.set_debuglevel(True)
             self.server.quit()
             print(f"SUCESS: {message}")
-            return {"message": "Email sent successfully."}
+            return {"status": 200, "message": "Email sent successfully."}
         except Exception as e:
             print(f"ERROR: {e}")
-            return {"message": "Error sending email."}
+            return {"status": 500,"message": "Error sending email."}
 
 
         
