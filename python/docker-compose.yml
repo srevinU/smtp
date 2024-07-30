@@ -17,8 +17,11 @@ services:
       - 127.0.0.1:5430:8000
     networks:
       - "smtp_net"
+      - "nginx-proxy-manager_default"
 
 networks:
   smtp_net:
     name: "smtp_net"
     driver: "bridge"
+  nginx-proxy-manager_default:
+    external: true

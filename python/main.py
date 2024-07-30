@@ -13,7 +13,7 @@ origins = os.environ['ORIGINS'].split(' ')
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -22,7 +22,7 @@ class Message(BaseModel):
     from_: str
     message: str
 
-@app.post("/email/")
+@app.post("/smtp/email/")
 async def send_email(message: Message):
     print(message)
     myserver = Smtp()
