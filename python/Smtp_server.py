@@ -8,8 +8,14 @@ class Smtp:
 
     def __init__(self):
         load_dotenv()
+        print(f"SMTP_HOST: {os.environ['SMTP_HOST']}")
+        print(f"SMTP_PORT: {os.environ['SMTP_PORT']}")
         print(f"SMTP_USER: {os.environ['SMTP_USER']}")
         print(f"SMTP_PASS: {os.environ['SMTP_PASS']}")
+        print(f"TO_EMAIL: {os.environ['TO_EMAIL']}")
+        print(f"TO_NAME: {os.environ['TO_NAME']}")
+        print(f"FROM_EMAIL: {os.environ['FROM_EMAIL']}")
+        print(f"FROM_NAME: {os.environ['FROM_NAME']}")
         self.server = smtplib.SMTP(os.environ['SMTP_HOST'], os.environ['SMTP_PORT'])
         self.subject = os.environ['SUBJECT']
         self.to = email.utils.formataddr((os.environ['TO_NAME'],  os.environ['TO_EMAIL']))
