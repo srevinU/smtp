@@ -24,6 +24,7 @@ app.add_middleware(
 class Message(BaseModel):
     from_: str
     message: str
+    instance: str
 
 class EmailResponse(BaseModel):
     status: int
@@ -33,7 +34,7 @@ class EmailResponse(BaseModel):
 async def send_email(message: Message):
     print(message)
     myserver = Smtp()
-    result = myserver.send_email(from_=message.from_ ,message=message.message)
+    result = myserver.send_email(from_=message.from_ ,message=message.message, instance=message.instance)
     return EmailResponse(status=result['status'], message=result['message'])
 
 if __name__ == '__main__':
