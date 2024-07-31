@@ -14,6 +14,8 @@ class Smtp:
         self.from_ = email.utils.formataddr((os.environ['FROM_NAME'],  os.environ['FROM_EMAIL']))
 
     def send_email(self, from_, message):
+        print(f"SMTP_USER: {os.environ['SMTP_USER']}")
+        print(f"SMTP_PASS: {os.environ['SMTP_PASS']}")
         try:
             message = MIMEText(message)
             message['To'] = self.to
